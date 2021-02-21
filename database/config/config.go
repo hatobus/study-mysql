@@ -3,9 +3,9 @@ package config
 import "github.com/kelseyhightower/envconfig"
 
 type MySQLConfig struct {
-	Host     string `default:"localhost"`
+	Host     string `default:"127.0.0.1"`
 	Port     string `default:"3306"`
-	User     string `default:"root"`
+	DBUser     string `default:"root"`
 	Password string `default:"mysql"`
 	DataBase string `default:""`
 }
