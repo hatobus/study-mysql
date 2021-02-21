@@ -32,7 +32,7 @@ func PrepareDB(dbName string, conf *config.MySQLConfig) error {
 		return err
 	}
 
-	return nil
+	return db.Close()
 }
 
 func RunSQLScript(filePath, dbName string, conf *config.MySQLConfig) error {
