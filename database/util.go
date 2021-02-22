@@ -1,15 +1,15 @@
 package database
 
 import (
-	"database/sql"
 	"fmt"
 	"os"
 	"os/exec"
 
 	"github.com/hatobus/study-mysql/database/config"
+	"github.com/jmoiron/sqlx"
 )
 
-func ConnectDB(conf *config.MySQLConfig) (*sql.DB, error) {
+func ConnectDB(conf *config.MySQLConfig) (*sqlx.DB, error) {
 	dsn := fmt.Sprintf("%v:%v@tcp(%v:%v)/%v?parseTime=true&loc=Asia%%2FTokyo",
 		conf.DBUser,
 		conf.Password,
@@ -18,7 +18,7 @@ func ConnectDB(conf *config.MySQLConfig) (*sql.DB, error) {
 		conf.DataBase,
 	)
 
-	return sql.Open("mysql", dsn)
+	return sqlx.Open("mysql", dsn)
 }
 
 func PrepareDB(dbName string, conf *config.MySQLConfig) error {
