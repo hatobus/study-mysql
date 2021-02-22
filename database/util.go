@@ -26,13 +26,14 @@ func PrepareDB(dbName string, conf *config.MySQLConfig) error {
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 
 	_, err = db.Exec(fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %v", dbName))
 	if err != nil {
 		return err
 	}
 
-	return db.Close()
+	return nil
 }
 
 func RunSQLScript(filePath, dbName string, conf *config.MySQLConfig) error {
