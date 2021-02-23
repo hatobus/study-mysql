@@ -1,4 +1,4 @@
-package main
+package group_concat
 
 import (
 	"log"
