@@ -5,6 +5,8 @@ import (
 	"strings"
 	"testing"
 
+	_ "github.com/go-sql-driver/mysql"
+
 	"github.com/google/go-cmp/cmp"
 	"github.com/hatobus/study-mysql/database"
 	"github.com/hatobus/study-mysql/database/config"
@@ -36,8 +38,7 @@ func prepareDB(t testing.TB, mysqlcnf *config.MySQLConfig) *sqlx.DB {
 		}
 	}
 
-	var db *sqlx.DB
-	db, err = database.ConnectDB(mysqlcnf)
+	db, err := database.ConnectDB(mysqlcnf)
 	if err != nil {
 		t.Fatal(err)
 	}
